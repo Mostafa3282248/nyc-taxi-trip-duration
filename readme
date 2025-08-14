@@ -1,0 +1,77 @@
+# NYC Taxi Trip Duration Prediction
+
+## Project Overview
+This project aims to predict taxi trip durations in New York City based on historical trip data, geolocation features, and additional engineered variables. The solution involves **exploratory data analysis (EDA)**, **feature engineering**, **machine learning model training**, and **interactive visualization** using Power BI.
+
+## Dataset
+The project uses three main datasets:
+- **train.csv** – Contains trip details, including `trip_duration` in seconds.
+- **test.csv** – Contains trips for which we need to predict the duration.
+- **sample_submission.csv** – Template for Kaggle competition submission.
+
+### Key Features:
+- Pickup and dropoff coordinates.
+- Pickup datetime (converted into hour, day, month, and weekday).
+- Passenger count.
+- Store-and-forward flag.
+
+---
+
+## Methodology
+
+### 1. Data Cleaning & Preprocessing
+- Removed extreme outliers in `trip_duration` for analysis purposes.
+- Converted coordinates into distances using Haversine formula.
+- Extracted date/time features: pickup hour, pickup day, month, weekday.
+- Encoded categorical variables.
+- Standardized numeric features.
+
+### 2. Model Experiments
+We tested four different models:
+1. **Linear Regression** – Baseline model.
+2. **Random Forest Regressor** – Handles non-linear patterns effectively.
+3. **XGBoost Regressor** – Gradient boosting with optimized parameters.
+4. **LightGBM Regressor** – Lightweight boosting model for large datasets.
+
+---
+
+### 3. Model Selection
+After evaluation, we selected the **best two models** based on RMSE:
+- **XGBoost** – Best performance on validation data.
+- **Random Forest** – Good accuracy and robust to noise.
+
+We then created an **ensemble prediction** by averaging the outputs of both models for the final submission.
+
+---
+
+## Visualization & Insights
+A full interactive **Power BI dashboard** was built to:
+- Display statistical summaries (mean, median, standard deviation) of trip durations.
+- Compare predicted vs. actual trip durations.
+- Explore trip patterns by pickup hour, weekday, and passenger count.
+- Identify data distribution patterns and potential anomalies.
+
+📂 **Download Power BI Dashboard**: [Click here to download from Dropbox](https://www.dropbox.com/scl/fi/rjd3orivkq21az8n4kki8/nyc_taxi_eda.pbix?rlkey=xslj6dmrsiotf3o4as6as1jle&st=rzm0n0aq&dl=0)
+
+---
+
+## Project Files
+- `nyc_taxi_eda_model.ipynb` – Full Python notebook for EDA, feature engineering, and model training.
+- `train.csv`, `test.csv`, `sample_submission.csv` – Dataset files.
+- `submission_ensemble_final.csv` – Final prediction file.
+- `nyc_taxi.pbix` – Power BI dashboard (download via Dropbox link).
+
+---
+## Results
+- **Final RMSE**: *[Insert RMSE here]*  
+- **Best Models**: XGBoost + Random Forest (ensemble).  
+- **Key Insights**:
+  - Trip duration is strongly influenced by pickup time and day of the week.
+  - Distance is the primary driver of trip duration, but traffic patterns cause variation.
+  - Ensemble methods improve prediction stability.
+
+---
+## Author
+**Mostafa Salih**  
+Data Analyst & Supply Chain Analytics Enthusiast  
+[GitHub Profile](https://github.com/Mostafa3282248) |www.linkedin.com/in/mostafa-saleh-068361206
